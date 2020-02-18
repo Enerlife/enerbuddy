@@ -1,0 +1,17 @@
+version: '2'
+services:
+  postgresql:
+    image: timescale/timescaledb:latest-pg11
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/pgsql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: enerbuddy
+      POSTGRES_PASSWORD: enerbuddy
+      POSTGRES_DB: enerbuddy
+      TIMESCALEDB_TELEMETRY: 'off'
+  grafana:
+    image: grafana/grafana:6.6.1
+    ports:
+      - '3000:3000'
